@@ -19,8 +19,8 @@ const showVocab = (array) => {
       <h5 class="card-title">${item.word}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${item.language}</h6>
       <p class="card-text">${item.definition}</p>
-      <a href="#" class="edit-card-btn--${item.firebaseKey}">Edit</a>
-      <a href="#" class="delete-card-btn--${item.firebaseKey}">Delete</a>
+      <button id="edit-card-btn--${item.firebaseKey}">Edit</button>
+      <button id="delete-card-btn--${item.firebaseKey}">Delete</button>
     </div>
   </div>`;
   });

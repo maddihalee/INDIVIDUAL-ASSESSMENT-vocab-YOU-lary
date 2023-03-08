@@ -1,14 +1,15 @@
-import { getVocab, htmlVocab } from '../api/getVocab';
-import { showVocab } from '../pages/vocab';
+import { getSingleVocab } from '../api/vocabData';
+import addVocabForm from '../components/forms/addVocabForm';
 
-const domEvents = () => {
+const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
-    if (e.target.id.includes('all')) {
-      getVocab().then(showVocab);
+    if (e.target.id.includes('edit-vocab-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleVocab(firebaseKey).then((vocabObj) => addVocabForm(user, vocabObj));
     }
 
-    if (e.target.id.includes('html')) {
-      htmlVocab();
+    if (e.target.id.includes('add-vocab-btn')) {
+      addVocabForm(user);
     }
   });
 };
