@@ -10,6 +10,7 @@ const formEvents = (user) => {
         word: document.querySelector('#title').value,
         definition: document.querySelector('#description').value,
         language: document.querySelector('#vocab-id').value,
+        timestamp: new Date().toLocaleString(),
         uid: user.uid,
       };
 
@@ -22,13 +23,18 @@ const formEvents = (user) => {
       });
     }
 
-    // // TODO: CLICK EVENT FOR EDITING A BOOK
-    // if (e.target.id.includes('update-book')) {
-    //   const [, firebaseKey] = e.target.id.split('--');
-    //   console.warn('CLICKED UPDATE BOOK', e.target.id);
-    //   console.warn(firebaseKey);
-    // }
-    // FIXME:ADD CLICK EVENT FOR EDITING AN AUTHOR
+    if (e.target.id.includes('update-vocab')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        word: document.querySelector('#title').value,
+        definition: document.querySelector('#description').value,
+        language: document.querySelector('#vocab-id').value,
+        firebaseKey
+      };
+      updateVocab(payload).then(() => {
+        getVocab(user.uid).then(showVocab);
+      });
+    }
   });
 };
 

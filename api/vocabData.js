@@ -85,6 +85,21 @@ const getSingleVocab = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const htmlVocab = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocab).json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const html = Object.values(data).filter((obj) => obj.language === 'HTML');
+      resolve(html);
+    })
+    .catch(reject);
+});
+
 export {
   getVocab,
   deleteVocab,
@@ -92,4 +107,5 @@ export {
   filterVocab,
   createVocab,
   updateVocab,
+  htmlVocab
 };
