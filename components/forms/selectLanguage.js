@@ -1,5 +1,5 @@
-import { getVocab } from '../../api/vocabData';
 import renderToDOM from '../../utils/renderToDom';
+import { getVocab } from '../../api/vocabData';
 
 const selectLanguage = (user, vocabId) => {
   let domString = `<label for="author">Select an Author</label>
