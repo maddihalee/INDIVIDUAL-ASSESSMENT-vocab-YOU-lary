@@ -1,11 +1,11 @@
 import clearDom from '../../utils/clearDom';
 import renderToDOM from '../../utils/renderToDom';
-import selectLanguage from './selectLang';
+import selectLanguage from './selectLanguage';
 
 const addVocabForm = (user, obj = {}) => {
   clearDom();
   const domString = `
-    <form id="${obj.firebaseKey ? `update-book--${obj.firebaseKey}` : 'submit-book'}" class="mb-4">
+    <form id="${obj.firebaseKey ? `update-vocab--${obj.firebaseKey}` : 'submit-vocab'}" class="mb-4">
       <div class="form-group">
         <label for="title">Vocab Word</label>
         <input type="text" class="form-control" id="title" aria-describedby="bookTitle" placeholder="Enter Vocabulary Word" value="${obj.name || ''}" required>
@@ -21,7 +21,7 @@ const addVocabForm = (user, obj = {}) => {
       <option>CSS</option>
       <option>JavaScript</option>
       </select>
-      <button type="submit" class="btn btn-primary">Submit Book
+      <button type="submit" class="btn btn-primary">Submit Word
       </button>
     </form>`;
 
